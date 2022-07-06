@@ -32,9 +32,6 @@ public class ProductController {
 
 	@PostMapping("")
 	public String createProduct() {
-//		System.out.println("viet");
-		System.out.println("viet2");
-		System.out.println("viet3");
 		return null;
 	}
 

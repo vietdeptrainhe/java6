@@ -33,6 +33,7 @@ public class ProductController {
 	@PostMapping("")
 	public String createProduct() {
 		System.out.println("viet");
+		System.out.println("viet2");
 		return null;
 	}
 

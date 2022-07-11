@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +21,7 @@ import com.shopping.service.impl.AccountServiceImpl;
 import com.shopping.service.impl.ProductServiceImpl;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/products")
 public class ProductController {
 	
@@ -31,20 +35,17 @@ public class ProductController {
 	}
 
 	@PostMapping("")
-	public String createProduct() {
-//		System.out.println("viet");
-		System.out.println("viet2");
-		System.out.println("viet3");
-		return null;
+	public Product createProduct(@RequestBody Product product) {
+		return productServiceImpl.save(product);
 	}
 
-	@PutMapping("/{id}")
-	public String updateProduct() {
-		return null;
+	@PutMapping()
+	public Product updateProduct(@RequestBody Product product) {
+		return productServiceImpl.save(product);
 	}
 		
 	@DeleteMapping("/{id}")
-	public String deleteProduct() {
-		return null;
+	public void deleteProduct(@PathVariable Integer id) {
+		productServiceImpl.delete(id);
 	}
 }

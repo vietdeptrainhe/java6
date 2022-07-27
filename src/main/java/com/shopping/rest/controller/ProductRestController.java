@@ -32,7 +32,7 @@ import com.shopping.service.impl.ProductServiceImpl;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/products")
-public class ProductController {
+public class ProductRestController {
 	
 	@Autowired
 	ProductServiceImpl productServiceImpl;

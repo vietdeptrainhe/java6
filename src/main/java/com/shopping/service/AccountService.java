@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.shopping.entity.Account;
+import com.shopping.model.dto.AccountDto;
 
 public interface AccountService {
-	List<Account> findAll();		
-	Optional<Account> findById(String username);
-	Account save(Account account);
+	List<AccountDto> findAll();		
+	Optional<AccountDto> findById(String username);
+	Account save(AccountDto account);
 	void delete(String username);
 }

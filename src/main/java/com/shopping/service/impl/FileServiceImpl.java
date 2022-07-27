@@ -26,7 +26,6 @@ public class FileServiceImpl implements FileService{
 	@Override
 	public Path getPath(String folder, String filename) {
 		String realPath = app.getRealPath("/files");
-//		File dir = Paths.get(app.getRealPath("/"),folder).toFile();
 		if (!Files.exists(Path.of(realPath))) {
 			try {
 				Files.createDirectory(Path.of(realPath));

@@ -19,7 +19,7 @@ import com.shopping.service.impl.RoleServiceImpl;
 
 @RestController
 @CrossOrigin("*")
-public class AuthorityRestController {
+public class AuthorityController {
 	@Autowired
 	AuthorityServiceImpl authorityServiceImpl;
 	

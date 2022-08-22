@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.repository.IAccountRepository;
-import com.shopping.repository.IAuthorityRepository;
-import com.shopping.repository.IRoleRepository;
 import com.shopping.service.impl.AccountServiceImpl;
 import com.shopping.service.impl.AuthorityServiceImpl;
 import com.shopping.service.impl.RoleServiceImpl;

@@ -1,5 +1,7 @@
 package com.shopping.config;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +11,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -41,17 +44,23 @@ public class SecurityConfig{
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
-		.cors().disable()
+//		.cors().disable()
 		.csrf().disable()
+//		.authorizeRequests()
+//		.antMatchers("/login","/products/**","/products/views","/files/**").permitAll()
+//		.antMatchers("/rest/authorities").hasAnyRole("Directors")
+//		.anyRequest().authenticated()
 		.authorizeRequests()
-		.antMatchers("/test/login","/products/**","/products/views","/files/**").permitAll()
-		.antMatchers("/rest/authorities").hasAnyRole("Directors")
-		.anyRequest().authenticated()
+		.antMatchers("/order/**").authenticated()
+		.antMatchers("/admin/**").hasAnyRole("Staffs","Directors")
+		.antMatchers("/authorities").hasAnyRole("Directors")
+		.anyRequest().permitAll()
 		.and()
-		.logout();
-//		http.formLogin();
-		
-//		http.addFilterBefore(null, null)
+		.exceptionHandling().authenticationEntryPoint((request, response, authException) -> {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().println(authException.getMessage());
+        }).and()
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}

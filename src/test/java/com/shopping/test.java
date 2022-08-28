@@ -28,7 +28,7 @@ public class test {
 		String rawpassword = "123";
 		String encodePassword = passwordEncoder.encode(rawpassword);
 		Account account = new Account();
-		account.setUsername("viet123");
+		account.setUsername("viet1");
 		account.setPassword(encodePassword);
 		Account account1 = accountRepository.save(account);
 		assertThat(account1).isNotNull();

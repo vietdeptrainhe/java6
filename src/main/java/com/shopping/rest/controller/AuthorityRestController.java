@@ -26,7 +26,7 @@ public class AuthorityRestController {
 	@Autowired
 	AccountServiceImpl accountServiceImpl;
 	
-	@GetMapping("/rest/authorities")
+	@GetMapping("/authorities")
 	public ResponseEntity<?> search2 () {
 		Map<String, Object> data = new HashMap<>();
 		data.put("authorities", authorityServiceImpl.findAll());

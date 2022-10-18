@@ -88,7 +88,7 @@ public class ProductRestController {
 		return new ResponseEntity<>(product,HttpStatus.OK);
 	}
 
-	@PostMapping("")
+	@PostMapping()
 	public Product createProduct(@RequestBody Product product) {
 		return productServiceImpl.save(product);
 	}
